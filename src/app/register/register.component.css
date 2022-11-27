@@ -1,0 +1,19 @@
+.avatar-container {
+    width: 50%;
+    display: block;
+    text-align: center;
+}
+
+.custom-avatar {
+    height: 150px;
+    width: 150px;
+    border-radius: 75px;
+    background-color: grey;
+    display: block;
+    overflow: hidden;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+}
