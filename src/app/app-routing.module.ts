@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { FollowerZoneComponent } from './follower-zone/follower-zone.component';
 import { LoginComponent } from './login/login.component';
 import { OnlineZoneComponent } from './online-zone/online-zone.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   },
   {
     path: 'follower-zone',
-    component: FollowerZoneComponent
+    component: FollowerZoneComponent,
+    // canActivate: [AuthGuard]
   },
   {
     path: 'login',

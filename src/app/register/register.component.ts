@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent {
 
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService, private _router: Router) { }
 
 
   registerUserData: any = {}
@@ -16,12 +17,16 @@ export class RegisterComponent {
   registerUser() {
     this._auth.register(this.registerUserData)
       .subscribe(
-        res => console.log(res),
+        res => {
+          localStorage.setItem('token', res.token)
+          this._router.navigate(['/follower-zone'])
+        },
         err => console.log(err)
       )
   }
 
-  url = ''
+  image_url = ''
+  default_img_url = '../../assets/images/default.png'
 
   selectFile(event: any) {
     try {
@@ -29,14 +34,15 @@ export class RegisterComponent {
         var reader = new FileReader()
         reader.readAsDataURL(event.target.files[0])
         reader.onload = (event: any) => {
-          this.url = event.target.result
+          this.image_url = event.target.result
+          console.log(this.image_url)
           this.registerUserData.profileImage = event.target.result
 
         }
 
       }
     } catch (e) {
-      this.url = ''
+      this.image_url = ''
     }
 
   }

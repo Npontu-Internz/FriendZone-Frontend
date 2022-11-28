@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-online-zone',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./online-zone.component.css']
 })
 export class OnlineZoneComponent {
+
+  constructor(private _users: UsersService) { }
+
+  users: any = []
+
+  ngOnInit() {
+    this._users.getUsers().
+      subscribe(
+        res => this.users = res.users,
+        err => console.log(err)
+      )
+  }
 
 }
