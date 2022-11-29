@@ -28,4 +28,19 @@ export class FollowingZoneComponent {
       )
   }
 
+  unfollow(id: string) {
+    this._users.unfollowUser(id).
+      subscribe(
+        res => {
+          // Update followers
+          this._users.getFollowing().
+            subscribe(
+              res => this.followings = res.following,
+              err => console.log(err)
+            )
+        },
+        err => console.log(err)
+      )
+  }
+
 }

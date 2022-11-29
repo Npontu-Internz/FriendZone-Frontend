@@ -32,7 +32,7 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'following',
+    path: 'following-zone',
     component: FollowingZoneComponent,
     canActivate: [AuthGuard]
   }

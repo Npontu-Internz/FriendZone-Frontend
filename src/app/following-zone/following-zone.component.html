@@ -27,8 +27,8 @@
                     </span>
                     <div class="mx-auto"></div>
                     <span>
-                        <h5 class="count-text">{{following.followings}}</h5>
-                        followings
+                        <h5 class="count-text">{{following.followers}}</h5>
+                        followers
                     </span>
                     <div class="mx-auto"></div>
                     <span>
@@ -37,9 +37,8 @@
                     </span>
                 </div>
                 <hr>
-                <button [class]="(following.isFollowed? 'btn-danger': 'online-text-color') + ' btn w-100'"
-                    (click)="following.isFollowed ? unfollow(following._id) : follow(following._id)"
-                    style="color: white;">{{following.isFollowed? 'Unfollow': 'Follow' }}</button>
+                <button class="btn-danger btn w-100" (click)="unfollow(following._id)"
+                    style="color: white;">Unfollow</button>
             </div>
         </div>
     </div>
