@@ -16,6 +16,11 @@
                     Follower Zone
                 </a>
             </li>
+            <li *ngIf="userLoggedIn()" class="nav-item">
+                <a class="nav-link" routerLink="/following-zone">
+                    Following Zone
+                </a>
+            </li>
         </ul>
         <ul *ngIf="!userLoggedIn()" class="navbar-nav">
             <a class="nav-link" routerLink="/login">

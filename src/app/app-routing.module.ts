@@ -5,6 +5,7 @@ import { FollowerZoneComponent } from './follower-zone/follower-zone.component';
 import { LoginComponent } from './login/login.component';
 import { OnlineZoneComponent } from './online-zone/online-zone.component';
 import { RegisterComponent } from './register/register.component';
+import { FollowingZoneComponent } from './following-zone/following-zone.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'following',
+    component: FollowingZoneComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

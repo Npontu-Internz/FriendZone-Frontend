@@ -14,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { AppbarComponent } from './appbar/appbar.component'
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { FollowingZoneComponent } from './following-zone/following-zone.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TokenInterceptorService } from './token-interceptor.service';
     LoginComponent,
     OnlineZoneComponent,
     FollowerZoneComponent,
-    AppbarComponent
+    AppbarComponent,
+    FollowingZoneComponent
   ],
   imports: [
     BrowserModule,
