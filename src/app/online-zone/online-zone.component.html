@@ -11,24 +11,30 @@
                     {{user.name}}
                 </h3>
                 <hr>
-                <div class="row mx-4 grey-text">
-                    <span>
+                <div class="row myContainer">
+                    <div class="text-box">
                         <h5 class="count-text">0</h5>
                         Posts
-                    </span>
-                    <div class="mx-auto"></div>
-                    <span>
+                    </div>
+                    <!-- <div class="mx-auto"></div> -->
+                    <div class="text-box">
                         <h5 class="count-text">{{user.followers}}</h5>
                         Followers
-                    </span>
-                    <div class="mx-auto"></div>
-                    <span>
+                    </div>
+                    <!-- <div class="mx-auto"></div> -->
+                    <div class="text-box">
                         <h5 class="count-text">{{user.following}}</h5>
                         Following
-                    </span>
+                    </div>
                 </div>
                 <hr>
-                <a class="btn btn-dark w-100" style="color: white;">Follow</a>
+                <button *ngIf="userLoggedIn()"
+                    [class]="(user.isFollowed? 'btn-danger': 'online-text-color') + ' btn w-100'"
+                    (click)="user.isFollowed ? unfollow(user._id) : follow(user._id)"
+                    style="color: white;">{{user.isFollowed? 'Unfollow': 'Follow' }}</button>
+
+                <a *ngIf="!userLoggedIn()" class="btn btn-dark w-100" style="color: white;"
+                    routerLink="/login">Follow</a>
             </div>
         </div>
     </div>

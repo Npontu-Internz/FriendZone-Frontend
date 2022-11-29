@@ -1,1 +1,46 @@
-<p>follower-zone works!</p>
+<div class="row mt-5">
+    <div *ngIf="followers[0] == null" class="mx-auto">
+        <div class="card text-center">
+            <div class="card-body">
+                <h3 class="card-title">
+                    No Followers
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3" *ngFor="let follower of followers">
+        <div class="card text-center">
+            <div class="card-body">
+                <div class="avatar-img mx-auto">
+                    <img *ngIf="follower.profileImage.secure_url" [src]="follower.profileImage.secure_url" width="100%"
+                        height="100%">
+                    <img *ngIf="!follower.profileImage.secure_url" src="">
+                </div>
+                <h3 class="card-title">
+                    {{follower.name}}
+                </h3>
+                <hr>
+                <div class="row mx-4 grey-text">
+                    <span>
+                        <h5 class="count-text">0</h5>
+                        Posts
+                    </span>
+                    <div class="mx-auto"></div>
+                    <span>
+                        <h5 class="count-text">{{follower.followers}}</h5>
+                        Followers
+                    </span>
+                    <div class="mx-auto"></div>
+                    <span>
+                        <h5 class="count-text">{{follower.following}}</h5>
+                        Following
+                    </span>
+                </div>
+                <hr>
+                <button [class]="(follower.isFollowed? 'btn-danger': 'online-text-color') + ' btn w-100'"
+                    (click)="follower.isFollowed ? unfollow(follower._id) : follow(follower._id)"
+                    style="color: white;">{{follower.isFollowed? 'Unfollow': 'Follow' }}</button>
+            </div>
+        </div>
+    </div>
+</div>

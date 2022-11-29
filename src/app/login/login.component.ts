@@ -18,7 +18,7 @@ export class LoginComponent {
       subscribe(
         res => {
           localStorage.setItem('token', res.token)
-          this._router.navigate(['/follower-zone'])
+          this._router.navigate(['/online-zone'])
         },
         err => console.log(err)
       )

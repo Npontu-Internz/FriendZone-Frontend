@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsersService } from '../users.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-online-zone',
@@ -8,14 +9,58 @@ import { UsersService } from '../users.service';
 })
 export class OnlineZoneComponent {
 
-  constructor(private _users: UsersService) { }
+  constructor(private _users: UsersService, private _auth: AuthService) { }
 
   users: any = []
 
   ngOnInit() {
-    this._users.getUsers().
+    // Requests for private users
+    if (this._auth.isLoggedIn()) {
+      this._users.getPrivateUsers().
+        subscribe(
+          res => this.users = res.users,
+          err => console.log(err)
+        )
+    }// Requests of all users
+    else {
+      this._users.getUsers().
+        subscribe(
+          res => this.users = res.users,
+          err => console.log(err)
+        )
+    }
+  }
+
+  userLoggedIn() {
+    return this._auth.isLoggedIn();
+  }
+
+  follow(id: string) {
+    this._users.followUser(id).
       subscribe(
-        res => this.users = res.users,
+        res => {
+          // Update users
+          this._users.getPrivateUsers().
+            subscribe(
+              res => this.users = res.users,
+              err => console.log(err)
+            )
+        },
+        err => console.log(err)
+      )
+  }
+
+  unfollow(id: string) {
+    this._users.unfollowUser(id).
+      subscribe(
+        res => {
+          // Update users
+          this._users.getPrivateUsers().
+            subscribe(
+              res => this.users = res.users,
+              err => console.log(err)
+            )
+        },
         err => console.log(err)
       )
   }

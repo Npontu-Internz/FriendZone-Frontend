@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+.avatar-img {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    background-color: goldenrod;
+    overflow: hidden;
+    align-items: stretch;
+}
+
+.grey-text {
+    font-size: 14px;
+    line-height: 18px;
+    color: rgb(142, 142, 142);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.count-text {
+    color: #363636;
+}
+
+.text-box {
+    height: 60px;
+    width: 68.237px;
+}
+
+.myContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.online-text-color {
+    background-color: goldenrod;
+}
+
+.online-bg-color {
+    background-color: #D63447;
+}

@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: 'follower-zone',
     component: FollowerZoneComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
