@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class UsersService {
 
   private _getUsersUrl = "http://localhost:5000/"
+  private _getCurrentUserUrl = "http://localhost:5000/api/v1/users/current-user"
   private _getPrivateUsersUrl = "http://localhost:5000/api/v1/users/private-users"
   private _getFollowersUrl = "http://localhost:5000/api/v1/users/followers"
   private _getFollowingUrl = "http://localhost:5000/api/v1/users/following"
@@ -42,6 +43,10 @@ export class UsersService {
 
   unfollowUser(id: string) {
     return this.http.post<any>(this._unfollowUserUrl + `/${id}`, {})
+  }
+
+  getCurrentUser() {
+    return this.http.get<any>(this._getCurrentUserUrl)
   }
 
 

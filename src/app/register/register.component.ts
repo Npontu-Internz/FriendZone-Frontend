@@ -35,7 +35,6 @@ export class RegisterComponent {
         reader.readAsDataURL(event.target.files[0])
         reader.onload = (event: any) => {
           this.image_url = event.target.result
-          console.log(this.image_url)
           this.registerUserData.profileImage = event.target.result
 
         }
