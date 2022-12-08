@@ -1,4 +1,4 @@
-<nav [class]="(userLoggedIn()? 'online-bg-color' :'bg-dark') + ' navbar navbar-expand-lg navbar-dark' ">
+<nav [class]="(userLoggedIn()? 'online-bg-color' :'bg-dark') + ' navbar navbar-expand-lg navbar-dark fixed-top' ">
     <a class="navbar-brand " style="color: goldenrod;" href="#">FriendZone</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
@@ -31,9 +31,24 @@
             </a>
         </ul>
         <ul *ngIf="userLoggedIn()" class="navbar-nav">
-            <a class="nav-link" (click)="logout()" routerLink="/login">
-                Logout
-            </a>
+
+            <div class="dropdown">
+                <div class="dropdown-toggle" style="margin-left: 100px; color: white;" id="userMenu"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img *ngIf="!user.profileImage.secure_url" class="user-pic">
+                    <img *ngIf="user.profileImage.secure_url" class="user-pic" [src]="user.profileImage.secure_url">
+                </div>
+
+                <div class="dropdown-menu" aria-labelledby="userMenu">
+                    <h3 class="dropdown-header">{{user.name}}</h3>
+                    <hr>
+                    <a class="dropdown-item" (click)="uploadDialog()" style="cursor: pointer;">Update Picture</a>
+                    <a class="dropdown-item" (click)="logout()" routerLink="/login">Logout</a>
+                </div>
+            </div>
         </ul>
+
+
     </div>
+
 </nav>

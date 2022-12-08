@@ -33,7 +33,7 @@ export class UsersService {
     return this.http.get<any>(this._getFollowingUrl)
   }
 
-  updateProfilePicture(image: string) {
+  updateProfilePicture(image: any) {
     return this.http.post<any>(this._updateProfilePictureUrl, image)
   }
 

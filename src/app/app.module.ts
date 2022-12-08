@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 import { AppComponent } from './app.component';
 import { UsersService } from './users.service';
@@ -15,6 +21,7 @@ import { AppbarComponent } from './appbar/appbar.component'
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { FollowingZoneComponent } from './following-zone/following-zone.component';
+import { DialogComponent } from './appbar/appbar.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +31,19 @@ import { FollowingZoneComponent } from './following-zone/following-zone.componen
     OnlineZoneComponent,
     FollowerZoneComponent,
     AppbarComponent,
-    FollowingZoneComponent
+    FollowingZoneComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    MatFormFieldModule
   ],
   providers: [
     AuthService,
