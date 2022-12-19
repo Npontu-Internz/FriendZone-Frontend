@@ -6,9 +6,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
   constructor(private http: HttpClient) { }
+  endpoint = `https://friendzone.up.railway.app`
 
-  private _registerUrl = "http://localhost:5000/api/v1/auth/register"
-  private _loginUrl = "http://localhost:5000/api/v1/auth/login"
+  private _registerUrl = `${this.endpoint}/api/v1/auth/register`
+  private _loginUrl = `${this.endpoint}/api/v1/auth/login`
 
   register(user: any) {
     return this.http.post<any>(this._registerUrl, user)

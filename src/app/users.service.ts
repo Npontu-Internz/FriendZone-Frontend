@@ -5,15 +5,16 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsersService {
+  endpoint = `https://friendzone.up.railway.app`
 
-  private _getUsersUrl = "http://localhost:5000/"
-  private _getCurrentUserUrl = "http://localhost:5000/api/v1/users/current-user"
-  private _getPrivateUsersUrl = "http://localhost:5000/api/v1/users/private-users"
-  private _getFollowersUrl = "http://localhost:5000/api/v1/users/followers"
-  private _getFollowingUrl = "http://localhost:5000/api/v1/users/following"
-  private _updateProfilePictureUrl = "http://localhost:5000/api/v1/users/update-picture"
-  private _followUserUrl = "http://localhost:5000/api/v1/users/follow"
-  private _unfollowUserUrl = "http://localhost:5000/api/v1/users/unfollow"
+  private _getUsersUrl = `${this.endpoint}`
+  private _getCurrentUserUrl = `${this.endpoint}/api/v1/users/current-user`
+  private _getPrivateUsersUrl = `${this.endpoint}/api/v1/users/private-users`
+  private _getFollowersUrl = `${this.endpoint}/api/v1/users/followers`
+  private _getFollowingUrl = `${this.endpoint}/api/v1/users/following`
+  private _updateProfilePictureUrl = `${this.endpoint}/api/v1/users/update-picture`
+  private _followUserUrl = `${this.endpoint}/api/v1/users/follow`
+  private _unfollowUserUrl = `${this.endpoint}/api/v1/users/unfollow`
 
   constructor(private http: HttpClient) { }
 
