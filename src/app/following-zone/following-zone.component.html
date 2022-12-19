@@ -20,21 +20,21 @@
                     {{following.name}}
                 </h3>
                 <hr>
-                <div class="row mx-4 grey-text">
-                    <span>
+                <div class="row myContainer">
+                    <div class="text-box">
                         <h5 class="count-text">0</h5>
                         Posts
-                    </span>
-                    <div class="mx-auto"></div>
-                    <span>
+                    </div>
+
+                    <div class="text-box">
                         <h5 class="count-text">{{following.followers}}</h5>
-                        followers
-                    </span>
-                    <div class="mx-auto"></div>
-                    <span>
+                        Followers
+                    </div>
+
+                    <div class="text-box">
                         <h5 class="count-text">{{following.following}}</h5>
                         Following
-                    </span>
+                    </div>
                 </div>
                 <hr>
                 <button class="btn-danger btn w-100" (click)="unfollow(following._id)"
