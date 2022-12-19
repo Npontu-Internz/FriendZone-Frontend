@@ -35,8 +35,8 @@
             <div class="dropdown">
                 <div class="dropdown-toggle" style="margin-left: 100px; color: white;" id="userMenu"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img *ngIf="!user.profileImage.secure_url" class="user-pic">
-                    <img *ngIf="user.profileImage.secure_url" class="user-pic" [src]="user.profileImage.secure_url">
+                    <img *ngIf="!user.profileImage" class="user-pic" [src]="default_img_url">
+                    <img *ngIf="user.profileImage" class="user-pic" [src]="user.profileImage.secure_url">
                 </div>
 
                 <div class="dropdown-menu" aria-labelledby="userMenu">

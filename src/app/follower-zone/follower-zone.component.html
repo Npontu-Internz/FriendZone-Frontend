@@ -12,9 +12,9 @@
         <div class="card text-center">
             <div class="card-body">
                 <div class="avatar-img mx-auto">
-                    <img *ngIf="follower.profileImage.secure_url" [src]="follower.profileImage.secure_url" width="100%"
+                    <img *ngIf="follower.profileImage" [src]="follower.profileImage.secure_url" width="100%"
                         height="100%">
-                    <img *ngIf="!follower.profileImage.secure_url" src="">
+                    <img *ngIf="!follower.profileImage" [src]="default_img_url" width="100%" height="100%">
                 </div>
                 <h3 class="card-title">
                     {{follower.name}}

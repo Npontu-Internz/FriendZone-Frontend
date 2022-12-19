@@ -12,6 +12,8 @@ export class FollowingZoneComponent {
 
   constructor(private _users: UsersService, private _router: Router) { }
 
+  default_img_url = '../../assets/images/default-logo.png'
+
   followings: any = []
 
   ngOnInit() {

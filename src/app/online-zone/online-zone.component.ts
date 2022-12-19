@@ -11,6 +11,8 @@ export class OnlineZoneComponent {
 
   constructor(private _users: UsersService, private _auth: AuthService) { }
 
+  default_img_url = '../../assets/images/default-logo.png'
+
   users: any = []
 
   ngOnInit() {
@@ -25,7 +27,9 @@ export class OnlineZoneComponent {
     else {
       this._users.getUsers().
         subscribe(
-          res => this.users = res.users,
+          res => {
+            this.users = res.users
+          },
           err => console.log(err)
         )
     }

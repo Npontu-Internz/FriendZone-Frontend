@@ -20,21 +20,35 @@
                     </div>
                     <div class="form-group">
                         <label for="">Username</label>
-                        <input [(ngModel)]="registerUserData.name" name="name" type="text"
-                            class="form-control rounded-0" required>
+                        <input formControlName="name" name="name" type="text" class="form-control rounded-0" required>
+                        <div *ngIf="registerForm.get('name')!.invalid && registerForm.get('name')!.touched">
+                            <p *ngIf="registerForm.get('name')!.errors!['required']">Username is required</p>
+                            <p *ngIf="registerForm.get('name')!.errors!['minlength']">Username must be at least 3
+                                characters</p>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input [(ngModel)]="registerUserData.email" name="email" type="text"
-                            class="form-control rounded-0" required>
+                        <input formControlName="email" name="email" type="text" class="form-control rounded-0" required>
+                        <div *ngIf="registerForm.get('email')!.invalid && registerForm.get('email')!.touched">
+                            <p *ngIf="registerForm.get('email')!.errors!['required']">Email is required</p>
+                            <p *ngIf="registerForm.get('email')!.errors!['email']">Email must be a valid email address
+                            </p>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">Password</label>
-                        <input [(ngModel)]="registerUserData.password" name="password" type="password"
-                            class="form-control rounded-0" required>
+                        <input formControlName="password" name="password" type="password" class="form-control rounded-0"
+                            required>
+                        <div *ngIf="registerForm.get('password')!.invalid && registerForm.get('password')!.touched">
+                            <p *ngIf="registerForm.get('password')!.errors!['required']">Password is required</p>
+                            <p *ngIf="registerForm.get('password')!.errors!['minlength']">Password must be at least 6
+                                characters</p>
+                        </div>
                     </div>
-                    <button (click)="registerUser()" type="submit" class="btn btn-dark float-right">Register</button>
+                    <button [disabled]="registerForm.invalid" type="submit"
+                        class="btn btn-dark float-right">Register</button>
                 </form>
             </div>
         </div>

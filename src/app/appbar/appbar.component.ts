@@ -16,6 +16,8 @@ export class AppbarComponent {
     private _users: UsersService,
     private _dialog: MatDialog) { }
 
+  default_img_url = '../../assets/images/default-logo.png'
+
   user: any = {
     profileImage: {
       secure_url: ''
@@ -29,7 +31,21 @@ export class AppbarComponent {
         this._users.getCurrentUser().
           subscribe(
             res => {
-              this.user = res.user[0]
+              const { profileImage } = res.user[0]
+              let newUser = {}
+
+              if (!profileImage) {
+                newUser = {
+                  ...res.user[0],
+                  profileImage: {
+                    secure_url: this.default_img_url
+                  }
+                }
+              } else {
+                newUser = res.user[0]
+              }
+
+              this.user = newUser
             },
             err => console.log(err)
           )
@@ -56,9 +72,14 @@ export class AppbarComponent {
 
     this._dialog.open(DialogComponent, config).afterClosed().subscribe(
       res => {
-        if (res.updated) {
-          this.user.profileImage.secure_url = res.image
+        if (res) {
+          if (res.updated) {
+            this.user.profileImage.secure_url = res.image
+          }
         }
+      },
+      err => {
+        console.log(err)
       }
     );
   }
@@ -110,7 +131,6 @@ export class DialogComponent {
 
   ngOnInit() {
     this.imageData.profileImage = this.data.imageURL
-    this.pictureUpdated = false
   }
 
   @HostListener('document:click', ['$event'])
